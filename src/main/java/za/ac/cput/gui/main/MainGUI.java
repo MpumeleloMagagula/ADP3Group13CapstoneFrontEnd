@@ -4,13 +4,12 @@ package za.ac.cput.gui.main;
 //Capstone - Front-End
 //MainGUI
 
-import za.ac.cput.gui.item.AddItemGUI;
+import za.ac.cput.gui.doctor.DoctorMenuGUI;
 import za.ac.cput.gui.item.ItemMenuGUI;
 
 import java.awt.event.ActionListener;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
 
 public class MainGUI implements ActionListener {
@@ -114,11 +113,18 @@ public class MainGUI implements ActionListener {
         mainframe.setVisible(true);
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("5. Medication")){
             ItemMenuGUI itemMenuGUI = new ItemMenuGUI();
             itemMenuGUI.setGUI();
         }
+
+//        if (e.getActionCommand().equals("2. Doctor")){
+//            DoctorMenuGUI doctorMenuGUI = new DoctorMenuGUI();
+//
+//
+//        }
     }
 }
