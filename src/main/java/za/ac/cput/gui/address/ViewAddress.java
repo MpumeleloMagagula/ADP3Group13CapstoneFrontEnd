@@ -1,37 +1,24 @@
-package za.ac.cput.gui.item;
+package za.ac.cput.gui.address;
 
-//Na'eem Mahoney
-//218190751
-//Group13
-//Capstone
-//Front End
-//ItemMenuGui
-
-//Imports
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.net.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-
-public class ItemMenuGUI implements ActionListener{
-    //Initializing Components
+public class ViewAddress implements ActionListener {
     private JFrame MenuFrame;
     private JPanel panelNorth, panelSouth, panelEast, panelWest, panelCenter;
     private JLabel lblHeading;
-    private JButton btnAddItem, btnDeleteItem, btnCheckItem, btnUpdateItem, btnGetAllItems, btnExit;
+    private JButton btnCreateAddress,  btnViewAddress, btnUpdateAddress, btnDeleteAddress, btnExit;
     private JLabel Filler1, Filler2, Filler3, Filler4, Filler5;
     private Font headingFont;
     Color btnColor = Color.WHITE;
 
-    //Setting Up GUI Components
-    public ItemMenuGUI(){
+    public ViewAddress(){
         //Font
-        headingFont = new Font("Arial", Font.BOLD, 18);
+        headingFont = new Font("Times new roman", Font.BOLD, 30);
 
-        //Panels
-        MenuFrame = new JFrame("Item: ");
+        MenuFrame = new JFrame("VIEW ADDRESS ");
         panelNorth = new JPanel();
         panelSouth = new JPanel();
         panelEast = new JPanel();
@@ -44,7 +31,7 @@ public class ItemMenuGUI implements ActionListener{
         panelCenter.setBackground(Color.LIGHT_GRAY);
 
         //Heading
-        lblHeading = new JLabel("Item Menu",JLabel.CENTER);
+        lblHeading = new JLabel("VIEW ADDRESS",JLabel.CENTER);
 
         //Fillers:
         Filler1 = new JLabel("=====");
@@ -59,23 +46,20 @@ public class ItemMenuGUI implements ActionListener{
         Filler5.setForeground(Color.LIGHT_GRAY);
 
         //Buttons:
-        btnAddItem = new JButton("Add New Item");
-        btnAddItem.setBackground(btnColor);
-        btnCheckItem = new JButton("Check Item");
-        btnCheckItem.setBackground(btnColor);
-        btnUpdateItem = new JButton("Update Item");
-        btnUpdateItem.setBackground(btnColor);
-        btnDeleteItem = new JButton("Delete Item");
-        btnDeleteItem.setBackground(btnColor);
-        btnGetAllItems = new JButton("Display All Items");
-        btnGetAllItems.setBackground(btnColor);
+        btnCreateAddress = new JButton("House number: ");
+        btnCreateAddress.setBackground(btnColor);
+        btnViewAddress = new JButton("Street: ");
+        btnViewAddress.setBackground(btnColor);
+        btnUpdateAddress = new JButton("City: ");
+        btnUpdateAddress.setBackground(btnColor);
+        btnDeleteAddress = new JButton("Zip Code: ");
+        btnDeleteAddress.setBackground(btnColor);
+
         btnExit = new JButton("Exit");
         btnExit.setBackground(btnColor);
     }
 
-    //Setting GUI Layout
     public void setGUI() {
-        //Panel Grids
         panelNorth.setLayout(new GridLayout(2, 1));
         panelEast.setLayout(new GridLayout(5, 1));
         panelSouth.setLayout(new GridLayout(1, 3));
@@ -92,11 +76,10 @@ public class ItemMenuGUI implements ActionListener{
 
         //Panel Center:
         panelCenter.add(Filler3);
-        panelCenter.add(btnAddItem);
-        panelCenter.add(btnCheckItem);
-        panelCenter.add(btnUpdateItem);
-        panelCenter.add(btnDeleteItem);
-        panelCenter.add(btnGetAllItems);
+        panelCenter.add(btnCreateAddress);
+        panelCenter.add(btnViewAddress);
+        panelCenter.add(btnUpdateAddress);
+        panelCenter.add(btnDeleteAddress);
         panelCenter.add(Filler4);
 
         //Panel East
@@ -116,11 +99,10 @@ public class ItemMenuGUI implements ActionListener{
         MenuFrame.add(panelWest, BorderLayout.WEST);
 
         //Telling compiler to listen for actions from the buttons:
-        btnAddItem.addActionListener(this);
-        btnCheckItem.addActionListener(this);
-        btnUpdateItem.addActionListener(this);
-        btnDeleteItem.addActionListener(this);
-        btnGetAllItems.addActionListener(this);
+        btnCreateAddress.addActionListener(this);
+        btnViewAddress.addActionListener(this);
+        btnUpdateAddress.addActionListener(this);
+        btnDeleteAddress.addActionListener(this);
         btnExit.addActionListener(this);
 
         //Set GUI:
@@ -132,43 +114,13 @@ public class ItemMenuGUI implements ActionListener{
 
     }
 
+
+    @Override
     public void actionPerformed(ActionEvent e) {
-        //When Add New Item Button is clicked
-        if(e.getActionCommand().equals("Add New Item")){
-            //Call AddItemGui
-            AddItemGUI addItemGUI = new AddItemGUI();
-            addItemGUI.setGUI();
-        }
 
-        //When Check Item Button is clicked
-        if(e.getActionCommand().equals("Check Item")){
-            //Call CheckItemGui
-            ReadItemGUI readItemGUI = new ReadItemGUI();
-            readItemGUI.setGUI();
-        }
-
-        //When Update Item Button is clicked
-        if(e.getActionCommand().equals("Update Item")){
-            //Call UpdateItemGui
-            UpdateItemGUI updateItemGUI = new UpdateItemGUI();
-            updateItemGUI.setGUI();
-        }
-
-        //When Delete Item Button is clicked
-        if(e.getActionCommand().equals("Delete Item")){
-            //Call DeleteItemGui
-            DeleteItemGUI deleteItemGUI = new DeleteItemGUI();
-            deleteItemGUI.setGUI();
-        }
-
-        if(e.getActionCommand().equals("Display All Items")){
-            GetAllItemsGui getAllItemsGui = new GetAllItemsGui();
-            getAllItemsGui.setGUI();
-        }
 
         if(e.getActionCommand().equals("Exit")){
             MenuFrame.dispose();
         }
     }
-
 }
